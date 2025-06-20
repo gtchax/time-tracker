@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Task = {
   id: number;
@@ -15,10 +15,10 @@ const NewEntry = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [sumTotal, setSumTotal] = useState<number>(0);
 
-  const totalHours = () => {
+  useEffect(() => {
     const total = tasks.reduce((sum, task) => sum + task.duration, 0);
     setSumTotal(total);
-  };
+  }, [tasks]);
 
   const handleSave = () => {
     if (!taskName.trim()) {
@@ -38,6 +38,13 @@ const NewEntry = () => {
     };
     setTasks((prev) => [...prev, newTask]);
     totalHours();
+    handleReset()
+  };
+
+  const handleReset = () => {
+    setTaskName("");
+    setTaskDuration(undefined);
+   
   };
 
   return (
