@@ -13,6 +13,12 @@ const NewEntry = () => {
   );
   const [error, setError] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [sumTotal, setSumTotal] = useState<number>(0);
+
+  const totalHours = () => {
+    const total = tasks.reduce((sum, task) => sum + task.duration, 0);
+    setSumTotal(total);
+  };
 
   const handleSave = () => {
     if (!taskName.trim()) {
@@ -31,6 +37,7 @@ const NewEntry = () => {
       duration: taskDuration!,
     };
     setTasks((prev) => [...prev, newTask]);
+    totalHours();
   };
 
   return (
@@ -60,7 +67,8 @@ const NewEntry = () => {
       </div>
       <div>
         <hr />
-        <h2>List entries</h2>
+        <h2>List entries </h2>
+        <span>Total hours worked: {sumTotal}</span>
         {tasks.map((task) => (
           <div key={task.id}>
             {task.name}
