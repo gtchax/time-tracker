@@ -1,11 +1,8 @@
+import { Task } from "../../../lib/types";
 import "./NewEntry.css";
 import React, { useEffect, useState } from "react";
 
-type Task = {
-  id: number;
-  name: string;
-  duration: number;
-};
+
 
 const NewEntry = () => {
   const [taskName, setTaskName] = useState<string>("");
