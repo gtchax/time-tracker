@@ -26,8 +26,8 @@ function App() {
       return;
     }
 
-    if (taskDuration && taskDuration <= 0) {
-      setError("Time worked must be greater than 0 seconds.");
+    if (taskDuration === undefined || taskDuration <= 0) {
+      setError("Time worked must be greater than 0");
       return;
     }
 
