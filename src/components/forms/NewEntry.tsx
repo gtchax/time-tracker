@@ -37,13 +37,12 @@ const NewEntry = () => {
       duration: taskDuration!,
     };
     setTasks((prev) => [...prev, newTask]);
-    handleReset()
+    handleReset();
   };
 
   const handleReset = () => {
     setTaskName("");
     setTaskDuration(undefined);
-   
   };
 
   return (
@@ -69,6 +68,7 @@ const NewEntry = () => {
           }}
           className="border p-2 w-full mb-2"
         />
+        {error && <p>{error}</p>}
         <button onClick={handleSave}>Save</button>
       </div>
       <div>
