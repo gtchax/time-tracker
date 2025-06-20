@@ -15,6 +15,7 @@ const NewEntry = () => {
   const [error, setError] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const [sumTotal, setSumTotal] = useState<number>(0);
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
 
   useEffect(() => {
     const total = tasks.reduce((sum, task) => sum + task.duration, 0);
@@ -32,29 +33,48 @@ const NewEntry = () => {
       return;
     }
 
-    const newTask: Task = {
-      id: Date.now(),
-      name: taskName.trim(),
-      duration: taskDuration!,
-    };
-    setTasks((prev) => [...prev, newTask]);
+    if (editingTaskId !== null) {
+      setTasks((prev) =>
+        prev.map((t) =>
+          t.id === editingTaskId
+            ? { ...t, name: taskName, duration: taskDuration! }
+            : t
+        )
+      );
+    } else {
+      const newTask: Task = {
+        id: Date.now(),
+        name: taskName.trim(),
+        duration: taskDuration!,
+      };
+      setTasks((prev) => [...prev, newTask]);
+    }
     handleReset();
   };
 
   const handleReset = () => {
     setTaskName("");
     setTaskDuration(undefined);
+    setEditingTaskId(null);
   };
 
   const handleDelete = (id: number) => {
     setTasks((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const handleEdit = (task: Task) => {
+    setEditingTaskId(task.id);
+    setTaskName(task.name);
+    setTaskDuration(task.duration);
+    setError("");
+  
+  };
+
   return (
     <section className="container">
       <hr />
       <div className="form-container">
-        <h3>Add new Entry</h3>
+        <h3>{editingTaskId ? "Edit" : "Add new"} Entry</h3>
         <input
           type="text"
           placeholder="Task name"
@@ -78,7 +98,7 @@ const NewEntry = () => {
         {error && <p>{error}</p>}
         <button onClick={handleSave}>Save</button>
       </div>
-      <div>
+     {!editingTaskId && <div>
         <hr />
         <div className="flex-row">
           <h2>List entries </h2>
@@ -91,7 +111,7 @@ const NewEntry = () => {
           <thead>
             <tr>
               <th>Task Name</th>
-              <th>Duration (hrs)</th>
+              <th>Duration (hours)</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -101,7 +121,9 @@ const NewEntry = () => {
                 <td>{task.name}</td>
                 <td>{task.duration}</td>
                 <td>
-                  <button className="edit-btn">Edit</button>
+                  <button
+                  onClick={() => handleEdit(task)}
+                  className="edit-btn">Edit</button>
                   <button
                     className="delete-btn"
                     onClick={() => handleDelete(task.id)}
@@ -113,7 +135,7 @@ const NewEntry = () => {
             ))}
           </tbody>
         </table>}
-      </div>
+      </div> }
     </section>
   );
 };
