@@ -56,7 +56,6 @@ const NewEntry = () => {
             setTaskName(e.target.value);
             setError("");
           }}
-          className="border p-2 w-full mb-2"
         />
         <input
           type="number"
@@ -66,7 +65,6 @@ const NewEntry = () => {
             setTaskDuration(Number(e.target.value));
             setError("");
           }}
-          className="border p-2 w-full mb-2"
         />
         {error && <p>{error}</p>}
         <button onClick={handleSave}>Save</button>
