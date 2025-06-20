@@ -30,7 +30,7 @@ const Timer = () => {
       <div className="circle">
         <span className="time">{formatTime(seconds)}</span>
       </div>
-      <div>
+      <div className="flex">
         <button onClick={handleStartStop}>
           {isRunning ? "Stop" : "Start"}
         </button>
