@@ -46,7 +46,7 @@ const AddEditEntry = ({
             setError("");
           }}
         />
-        {error && <p>{error}</p>}
+        {error && <p className="error">{error}</p>}
         <button onClick={handleSave}>Save</button>
       </div>
     </>
