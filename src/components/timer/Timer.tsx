@@ -1,3 +1,4 @@
+import { formatTime } from "../../lib/utils";
 import "./Timer.css";
 import React, { useEffect, useState } from "react";
 
@@ -26,7 +27,9 @@ const Timer = () => {
 
   return (
     <section>
-      <div>{seconds}</div>
+      <div className="circle">
+        <span className="time">{formatTime(seconds)}</span>
+      </div>
       <div>
         <button onClick={handleStartStop}>
           {isRunning ? "Stop" : "Start"}
