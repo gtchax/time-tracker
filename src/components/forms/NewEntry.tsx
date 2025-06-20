@@ -37,7 +37,6 @@ const NewEntry = () => {
       duration: taskDuration!,
     };
     setTasks((prev) => [...prev, newTask]);
-    totalHours();
     handleReset()
   };
 
@@ -63,7 +62,7 @@ const NewEntry = () => {
         <input
           type="number"
           placeholder="Hours worked"
-          value={taskDuration}
+          value={taskDuration ?? ""}
           onChange={(e) => {
             setTaskDuration(Number(e.target.value));
             setError("");
