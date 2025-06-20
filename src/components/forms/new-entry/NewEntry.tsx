@@ -1,8 +1,8 @@
 import { Task } from "../../../lib/types";
+import EntryList from "../entry-list/EntryList";
+
 import "./NewEntry.css";
 import React, { useEffect, useState } from "react";
-
-
 
 const NewEntry = () => {
   const [taskName, setTaskName] = useState<string>("");
@@ -64,7 +64,6 @@ const NewEntry = () => {
     setTaskName(task.name);
     setTaskDuration(task.duration);
     setError("");
-  
   };
 
   return (
@@ -95,44 +94,13 @@ const NewEntry = () => {
         {error && <p>{error}</p>}
         <button onClick={handleSave}>Save</button>
       </div>
-     {!editingTaskId && <div>
-        <hr />
-        <div className="flex-row">
-          <h2>List entries </h2>
-          <span className="total">Total hours worked: {sumTotal}</span>
-        </div>
-
-        {tasks.length < 1 ?
-        <p className="text-center">No tasks entries added yet</p>
-          :<table className="task-table">
-          <thead>
-            <tr>
-              <th>Task Name</th>
-              <th>Duration (hours)</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <tr key={task.id}>
-                <td>{task.name}</td>
-                <td>{task.duration}</td>
-                <td>
-                  <button
-                  onClick={() => handleEdit(task)}
-                  className="edit-btn">Edit</button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(task.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>}
-      </div> }
+      <EntryList
+        editingTaskId={editingTaskId}
+        tasks={tasks}
+        sumTotal={sumTotal}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
     </section>
   );
 };
