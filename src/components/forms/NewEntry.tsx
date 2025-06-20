@@ -1,3 +1,4 @@
+import "./NewEntry.css";
 import React, { useEffect, useState } from "react";
 
 type Task = {
@@ -46,11 +47,14 @@ const NewEntry = () => {
   };
 
   return (
-    <section>
-      <div>
+    <section className="container">
+      <hr />
+      <div className="form-container">
+        <h3>Add new Entry</h3>
         <input
           type="text"
           placeholder="Task name"
+          className="mr"
           value={taskName}
           onChange={(e) => {
             setTaskName(e.target.value);
@@ -60,6 +64,7 @@ const NewEntry = () => {
         <input
           type="number"
           placeholder="Hours worked"
+          className="mr"
           value={taskDuration ?? ""}
           onChange={(e) => {
             setTaskDuration(Number(e.target.value));
@@ -71,14 +76,32 @@ const NewEntry = () => {
       </div>
       <div>
         <hr />
-        <h2>List entries </h2>
-        <span>Total hours worked: {sumTotal}</span>
-        {tasks.map((task) => (
-          <div key={task.id}>
-            {task.name}
-            {task.duration}
-          </div>
-        ))}
+        <div className="flex-row">
+          <h2>List entries </h2>
+          <span className="total">Total hours worked: {sumTotal}</span>
+        </div>
+
+        <table className="task-table">
+          <thead>
+            <tr>
+              <th>Task Name</th>
+              <th>Duration (hrs)</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map((task) => (
+              <tr key={task.id}>
+                <td>{task.name}</td>
+                <td>{task.duration}</td>
+                <td>
+                  <button className="edit-btn">Edit</button>
+                  <button className="delete-btn">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );

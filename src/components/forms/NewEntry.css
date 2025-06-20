@@ -1,0 +1,88 @@
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.task-table-wrapper {
+  max-width: 1080px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  border: 5px solid white;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-family: sans-serif;
+  border: px solid #f0f0f0;
+}
+
+.task-table th,
+.task-table td {
+  border: 1px solid #1d1d1d;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.task-table th {
+  background-color: #1d1d1d;
+  font-weight: bold;
+}
+
+.task-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.task-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.edit-btn,
+.delete-btn {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #facc15;
+  color: #000;
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.form-container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+input {
+  background: #1d1d1d;
+  border-radius: 8px;
+  border: none;
+  padding: 0.65rem 0.5rem;
+  outline: none;
+}
+
+.mr {
+  margin-right: 1rem;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+    background: #1d1d1d;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    color: orangered;
+}
