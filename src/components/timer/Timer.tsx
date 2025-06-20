@@ -1,6 +1,6 @@
 import { formatTime } from "../../lib/utils";
 import "./Timer.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Timer = () => {
   const [seconds, setSeconds] = useState<number>(0);
