@@ -52,9 +52,13 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
 input {
+  background: #1d1d1d;
+  border-radius: 8px;
+  border: none;
+  padding: 0.65rem 0.5rem;
   outline: none;
-  padding: 0.3em 0.8em;
 }
 
 .flex {

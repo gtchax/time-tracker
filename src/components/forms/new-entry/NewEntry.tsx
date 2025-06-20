@@ -46,6 +46,10 @@ const NewEntry = () => {
     setTaskDuration(undefined);
   };
 
+  const handleDelete = (id: number) => {
+    setTasks((prev) => prev.filter((t) => t.id !== id));
+  };
+
   return (
     <section className="container">
       <hr />
@@ -81,7 +85,9 @@ const NewEntry = () => {
           <span className="total">Total hours worked: {sumTotal}</span>
         </div>
 
-        <table className="task-table">
+        {tasks.length < 1 ?
+        <p className="text-center">No tasks entries added yet</p>
+          :<table className="task-table">
           <thead>
             <tr>
               <th>Task Name</th>
@@ -96,12 +102,17 @@ const NewEntry = () => {
                 <td>{task.duration}</td>
                 <td>
                   <button className="edit-btn">Edit</button>
-                  <button className="delete-btn">Delete</button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(task.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>}
       </div>
     </section>
   );
