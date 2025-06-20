@@ -26,17 +26,22 @@ const Timer = () => {
   };
 
   return (
-    <section>
-      <div className="circle">
-        <span className="time">{formatTime(seconds)}</span>
-      </div>
-      <div className="flex">
-        <button onClick={handleStartStop}>
-          {isRunning ? "Stop" : "Start"}
-        </button>
-        <button onClick={handleReset}>Reset</button>
-      </div>
-    </section>
+    <>
+      <header>
+        <h1 className="text-center">Time Tracker</h1>
+      </header>
+      <section>
+        <div className="circle">
+          <span className="time">{formatTime(seconds)}</span>
+        </div>
+        <div className="flex">
+          <button onClick={handleStartStop}>
+            {isRunning ? "Stop" : "Start"}
+          </button>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      </section>
+    </>
   );
 };
 

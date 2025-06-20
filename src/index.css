@@ -72,6 +72,15 @@ input {
   max-width: 1280px
 }
 
+.form-container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.mr {
+  margin-right: 1rem;
+}
+
 .text-center {
   text-align: center;
 }

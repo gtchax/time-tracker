@@ -1,5 +1,6 @@
 import { Task } from "../../../lib/types";
 import EntryList from "../entry-list/EntryList";
+import AddEditEntry from "./AddEditEntry";
 
 import "./NewEntry.css";
 import React, { useEffect, useState } from "react";
@@ -69,31 +70,18 @@ const NewEntry = () => {
   return (
     <section className="container">
       <hr />
-      <div className="form-container">
-        <h3>{editingTaskId ? "Edit" : "Add new"} Entry</h3>
-        <input
-          type="text"
-          placeholder="Task name"
-          className="mr"
-          value={taskName}
-          onChange={(e) => {
-            setTaskName(e.target.value);
-            setError("");
-          }}
-        />
-        <input
-          type="number"
-          placeholder="Hours worked"
-          className="mr"
-          value={taskDuration ?? ""}
-          onChange={(e) => {
-            setTaskDuration(Number(e.target.value));
-            setError("");
-          }}
-        />
-        {error && <p>{error}</p>}
-        <button onClick={handleSave}>Save</button>
-      </div>
+      <AddEditEntry
+        sumTotal={sumTotal}
+        editingTaskId={editingTaskId}
+        setTaskName={setTaskName}
+        setError={setError}
+        taskName={taskName}
+        setTaskDuration={setTaskDuration}
+        error={error}
+        taskDuration={taskDuration}
+        handleSave={handleSave}
+      />
+    
       <EntryList
         editingTaskId={editingTaskId}
         tasks={tasks}
