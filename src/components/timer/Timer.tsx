@@ -19,6 +19,11 @@ const Timer = () => {
     setIsRunning((prev) => !prev);
   };
 
+  const handleReset = () => {
+    setSeconds(0);
+    setIsRunning(false);
+  };
+
   return (
     <section>
       <div>{seconds}</div>
@@ -26,6 +31,7 @@ const Timer = () => {
         <button onClick={handleStartStop}>
           {isRunning ? "Stop" : "Start"}
         </button>
+        <button onClick={handleReset}>Reset</button>
       </div>
     </section>
   );
