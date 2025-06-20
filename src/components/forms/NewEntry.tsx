@@ -58,7 +58,16 @@ const NewEntry = () => {
         />
         <button onClick={handleSave}>Save</button>
       </div>
-      <div>{tasks.length}</div>
+      <div>
+        <hr />
+        <h2>List entries</h2>
+        {tasks.map((task) => (
+          <div key={task.id}>
+            {task.name}
+            {task.duration}
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
