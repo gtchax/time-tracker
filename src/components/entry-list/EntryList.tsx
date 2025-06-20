@@ -1,5 +1,5 @@
 import "./EntryList.css";
-import { Task } from "../../../lib/types";
+import { Task } from "../../lib/types";
 
 interface props {
   editingTaskId: number | null;
